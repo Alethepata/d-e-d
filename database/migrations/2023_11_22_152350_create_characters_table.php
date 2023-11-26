@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->decimal('height', 5, 2);
-            $table->decimal('wheight', 6, 2);
+            $table->decimal('weight', 6, 2);
             $table->text('background');
             $table->string('image');
             $table->tinyInteger('armor_class')->unsigned();

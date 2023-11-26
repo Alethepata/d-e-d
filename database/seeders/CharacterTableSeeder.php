@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Character;
-use Faker\Generator as Faker;
 
 class CharacterTableSeeder extends Seeder
 {
@@ -14,16 +13,28 @@ class CharacterTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        for ($i = 0; $i < 10; $i) {
 
-            $character = new Character();
-            $character->name = $faker->words(2, true);
-            $character->height = $faker->numberBetween(0, 999);
-            $character->wheight = $faker->numberBetween(0, 9999);
-            $character->background = $faker->text();
-            $character->image = $faker->text();
+
+        $characters = config('characters');
+
+        foreach ($characters as $character) {
+
+            $new_character = new Character();
+            $new_character->name = $character['name'];
+            $new_character->height = $character['height'];
+            $new_character->weight = $character['weight'];
+            $new_character->background = $character['background'];
+            $new_character->image = $character['image'];
+            $new_character->armor_class = $character['armor_class'];
+            $new_character->for = $character['for'];
+            $new_character->des = $character['des'];
+            $new_character->cos = $character['cos'];
+            $new_character->int = $character['int'];
+            $new_character->sag = $character['sag'];
+            $new_character->car = $character['car'];
+            $new_character->save();
         }
     }
 }
