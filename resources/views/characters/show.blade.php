@@ -48,5 +48,5 @@
 @endsection
 
 @section('title')
-    Home
+ {{$character->name}}
 @endsection
