@@ -4,15 +4,15 @@
 
     <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link active" href="{{route('home')}}">Home</a>
+            <a class="nav-link active" href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('characters.index')}}">Lista personaggi</a>
+            <a class="nav-link" href="{{ route('characters.index') }}">List Character</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Add personaggio</a>
+            <a class="nav-link" href="{{ route('characters.create') }}">Add Character</a>
         </li>
 
-      </ul>
+    </ul>
 
 </header>
