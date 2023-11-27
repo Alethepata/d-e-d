@@ -41,6 +41,7 @@ class CharacterController extends Controller
 
         $new_character = new Character();
         $new_character->fill($form_data);
+
         $new_character->save();
 
 

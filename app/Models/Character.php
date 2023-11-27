@@ -22,4 +22,6 @@ class Character extends Model
         'sag',
         'car'
     ];
+
+    //protected $guarded = ["id"]
 }
