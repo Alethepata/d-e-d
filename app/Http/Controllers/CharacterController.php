@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Character;
+use App\Http\Requests\CharacterRequest;
 
 class CharacterController extends Controller
 {
@@ -26,7 +27,11 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        return view('characters.create');
+        $title = 'Create Character';
+        $route = route('characters.store');
+        $method = 'POST';
+        $character = null;
+        return view('characters.create-edit', compact('title', 'route', 'method', 'character'));
     }
 
     /**
@@ -35,7 +40,7 @@ class CharacterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CharacterRequest $request)
     {
         $form_data = $request->all();
 
@@ -65,9 +70,12 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Character $character)
     {
-        //
+        $title = 'Edit Character';
+        $route = route('characters.update', $character);
+        $method = 'PUT';
+        return view('characters.create-edit', compact('title', 'route', 'method', 'character'));
     }
 
     /**
@@ -77,7 +85,7 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CharacterRequest $request, $id)
     {
         //
     }
@@ -88,8 +96,9 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Character $character)
     {
-        //
+        $character->delete();
+        return redirect()->route('characters.index');
     }
 }
