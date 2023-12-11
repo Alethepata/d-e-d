@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Models\Character;
 use App\Http\Requests\CharacterRequest;
 
@@ -17,7 +17,7 @@ class CharacterController extends Controller
     public function index()
     {
         $characters = Character::all();
-        return view('characters.index', compact('characters'));
+        return view('admin.characters.index', compact('characters'));
     }
 
     /**
@@ -28,10 +28,10 @@ class CharacterController extends Controller
     public function create()
     {
         $title = 'Create Character';
-        $route = route('characters.store');
+        $route = route('admin.characters.store');
         $method = 'POST';
         $character = null;
-        return view('characters.create-edit', compact('title', 'route', 'method', 'character'));
+        return view('admin.characters.create-edit', compact('title', 'route', 'method', 'character'));
     }
 
     /**
@@ -50,7 +50,7 @@ class CharacterController extends Controller
         $new_character->save();
 
 
-        return redirect()->route('characters.show', $new_character);
+        return redirect()->route('admin.characters.show', $new_character);
     }
 
     /**
@@ -61,7 +61,7 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return view('characters.show', compact('character'));
+        return view('admin.characters.show', compact('character'));
     }
 
     /**
@@ -73,9 +73,9 @@ class CharacterController extends Controller
     public function edit(Character $character)
     {
         $title = 'Edit Character';
-        $route = route('characters.update', $character);
+        $route = route('admin.characters.update', $character);
         $method = 'PUT';
-        return view('characters.create-edit', compact('title', 'route', 'method', 'character'));
+        return view('admin.characters.create-edit', compact('title', 'route', 'method', 'character'));
     }
 
     /**
@@ -85,13 +85,13 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CharacterRequest $request, Character $character )
+    public function update(CharacterRequest $request, Character $character)
     {
         $form_data = $request->all();
 
         $character->update($form_data);
 
-        return redirect()->route('characters.show', $character);
+        return redirect()->route('admin.characters.show', $character);
     }
 
     /**
@@ -103,6 +103,6 @@ class CharacterController extends Controller
     public function destroy(Character $character)
     {
         $character->delete();
-        return redirect()->route('characters.index');
+        return redirect()->route('admin.characters.index');
     }
 }

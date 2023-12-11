@@ -4,13 +4,13 @@
 
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link active" href="{{ route('home') }}">Home</a>
+            <a class="nav-link active" href="{{ route('admin.home') }}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('characters.index') }}">List Character</a>
+            <a class="nav-link" href="{{ route('admin.characters.index') }}">List Character</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('characters.create') }}">Add Character</a>
+            <a class="nav-link" href="{{ route('admin.characters.create') }}">Add Character</a>
         </li>
 
     </ul>

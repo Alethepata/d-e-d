@@ -10,11 +10,11 @@
                 <img src="{{ $character->image }}" class="card-img-top" alt="{{ $character->name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $character->name }}</h5>
-                    <a href="{{ route('characters.show', $character) }}" class="btn btn-primary"><i
+                    <a href="{{ route('admin.characters.show', $character) }}" class="btn btn-primary"><i
                             class="fa-solid fa-eye"></i></a>
-                    <a href="{{ route('characters.edit', $character) }}" class="btn btn-warning"><i
+                    <a href="{{ route('admin.characters.edit', $character) }}" class="btn btn-warning"><i
                             class="fa-solid fa-pencil"></i></a>
-                    <form class="d-inline-block" action="{{ route('characters.destroy', $character) }}" method="POST"
+                    <form class="d-inline-block" action="{{ route('admin.characters.destroy', $character) }}" method="POST"
                         onsubmit="return confirm('Are you sure you want to delete {{ $character->name }}?')">
                         @csrf
                         @method('DELETE')
