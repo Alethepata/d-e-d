@@ -18,7 +18,7 @@ class SkillTableSeeder extends Seeder
 
         foreach ($skills as $skill) {
             $new_skill = new Skill();
-            $new_skill->name = $skill;
+            $new_skill->name = $faker->word();
             $new_skill->description = $faker->paragraph();
             $new_skill->skill = $skill;
 

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Race extends Model
 {
     use HasFactory;
+
+    public function character()
+    {
+        return $this->hasMany(Character::class);
+    }
 }

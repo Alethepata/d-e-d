@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Character;
+use App\Models\Race;
 
 class CharacterTableSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class CharacterTableSeeder extends Seeder
         foreach ($characters as $character) {
 
             $new_character = new Character();
+            $new_character->race_id = Race::inRandomOrder()->first()->id;
             $new_character->name = $character['name'];
             $new_character->height = $character['height'];
             $new_character->weight = $character['weight'];
