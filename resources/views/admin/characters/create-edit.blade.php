@@ -89,7 +89,14 @@
             <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
-
+        <select class="form-select mb-3" aria-label="Default select example">
+            <option>Open this select menu</option>
+            @foreach ($skills as $skill)
+            <option value="{{ $skill->id }}"
+                @if($skill->id == old('skill_id', $character->skill?->id)) selected
+                @endif>{{ $skill->name }}</option>
+            @endforeach
+          </select>
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-secondary">Retry</button>
     </form>

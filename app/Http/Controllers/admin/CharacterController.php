@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Character;
 use App\Http\Requests\CharacterRequest;
+use App\Models\Race;
+use App\Models\Skill;
 
 class CharacterController extends Controller
 {
@@ -31,7 +33,9 @@ class CharacterController extends Controller
         $route = route('admin.characters.store');
         $method = 'POST';
         $character = null;
-        return view('admin.characters.create-edit', compact('title', 'route', 'method', 'character'));
+        $skills = Skill::all();
+        $races = Race::all();
+        return view('admin.characters.create-edit', compact('title', 'route', 'method', 'character', 'skills', 'races'));
     }
 
     /**
@@ -77,7 +81,9 @@ class CharacterController extends Controller
         $title = 'Edit Character';
         $route = route('admin.characters.update', $character);
         $method = 'PUT';
-        return view('admin.characters.create-edit', compact('title', 'route', 'method', 'character'));
+        $skills = Skill::all();
+        $races = Race::all();
+        return view('admin.characters.create-edit', compact('title', 'route', 'method', 'character', 'races', 'skills'));
     }
 
     /**
